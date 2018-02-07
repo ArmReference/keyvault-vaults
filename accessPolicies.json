@@ -1,0 +1,50 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "2017.09.01.0",
+  "parameters": {
+    "tenantId": {
+      "type": "string",
+      "metadata": {
+        "description": "The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. - globally unique identifier"
+      }
+    },
+    "objectId": {
+      "type": "string",
+      "metadata": {
+        "description": "The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies."
+      }
+    },
+    "applicationId": {
+      "type": "string",
+      "defaultValue": null,
+      "metadata": {
+        "description": "Application ID of the client making request on behalf of a principal - globally unique identifier"
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "metadata": {
+        "description": "Permissions the identity has for keys, secrets and certificates"
+      }
+    }
+  },
+  "variables": {
+    "comments": {
+      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#AccessPolicyEntry"
+    },
+    "accessPolicies": {
+      "tenantId": "[parameters('tenantId')]",
+      "objectId": "[parameters('objectId')]",
+      "applicationId": "[parameters('applicationId')]",
+      "permissions": "[parameters('permissions']"
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "accessPolicies": {
+      "type": "object",
+      "value": "[variables('accessPolicies')]"
+    }
+  }
+}
