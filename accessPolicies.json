@@ -16,7 +16,7 @@
     },
     "applicationId": {
       "type": "string",
-      "defaultValue": null,
+      "defaultValue": "",
       "metadata": {
         "description": "Application ID of the client making request on behalf of a principal - globally unique identifier"
       }
@@ -32,12 +32,20 @@
     "comments": {
       "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#AccessPolicyEntry"
     },
-    "accessPolicies": {
-      "tenantId": "[parameters('tenantId')]",
-      "objectId": "[parameters('objectId')]",
-      "applicationId": "[parameters('applicationId')]",
-      "permissions": "[parameters('permissions')]"
-    }
+    "policy": [
+      {
+        "tenantId": "[parameters('tenantId')]",
+        "objectId": "[parameters('objectId')]",
+        "permissions": "[parameters('permissions')]"
+      },
+      {
+        "tenantId": "[parameters('tenantId')]",
+        "objectId": "[parameters('objectId')]",
+        "applicationId": "[parameters('applicationId')]",
+        "permissions": "[parameters('permissions')]"
+      }
+    ],
+    "accessPolicies": "[if(empty('applicationId'),variables('policy')[0],variables('policy')[1])]"
   },
   "resources": [
   ],
