@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "2017.09.01.0",
+  "parameters": {
+    "family": {
+      "type": "string",
+      "allowedValues": [
+        "A"
+      ],
+      "metadata": {
+        "description": "SKU family name"
+      }
+    },
+    "name": {
+      "type": "string",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "SKU name to specify whether the key vault is a standard vault or a premium vault."
+      }
+    }
+  },
+  "variables": {
+    "comments": {
+      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#Sku"
+    },
+    "sku": {
+      "family": "[parameters('family')]",
+      "name": "[parameters('name')]"
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "sku": {
+      "type": "object",
+      "value": "[variables('sku')]"
+    }
+  }
+}
