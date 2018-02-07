@@ -54,15 +54,26 @@
     "comments": {
       "defintion": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#VaultProperties"
     },
-    "properties": {
-      "tenantid": "[parameters('tenantId')]",
-      "sku": "[parameters('sku')]",
-      "accessPolicies": "[parameters('accessPolicies')]",
-      "enabledForDeployment": "[parameters('enabledForDeployment')]",
-      "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
-      "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-      "enableSoftDelete": "[parameters('enableSoftDelete')]"
-    }
+    "Vaultproperties": [
+      {
+        "tenantid": "[parameters('tenantId')]",
+        "sku": "[parameters('sku')]",
+        "accessPolicies": "[parameters('accessPolicies')]",
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]"
+      },
+      {
+        "tenantid": "[parameters('tenantId')]",
+        "sku": "[parameters('sku')]",
+        "accessPolicies": "[parameters('accessPolicies')]",
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "enableSoftDelete": "[parameters('enableSoftDelete')]"
+      }
+    ],
+    "properties": "[if(parameters('enableSoftDelete'),variables('Vaultproperties')[1],variables('Vaultproperties')[0])]"
   },
   "resources": [
   ],
