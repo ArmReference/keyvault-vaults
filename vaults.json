@@ -1,0 +1,39 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "2017.09.01.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of resource"
+      }
+    },
+    "VaultProperties": {
+      "type": "object",
+      "metadata": {
+        "description": "Properties of the vault"
+      }
+    }
+  },
+  "variables": {
+    "comments": {
+      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults"
+    },
+    "vaults": {
+      "name": "[parameters('name')]",
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2016-10-01",
+      "location": "[resourceGroup().location]",
+      "tags": "",
+      "properties": "[parameters('VaultProperties')]"
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "vaults": {
+      "type": "object",
+      "value": "[variables('vaults')]"
+    }
+  }
+}
