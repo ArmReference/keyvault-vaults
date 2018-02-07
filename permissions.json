@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "2017.09.01.0",
+  "parameters": {
+    "keys": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Permissions to keys - encrypt, decrypt, wrapKey, unwrapKey, sign, verify, get, list, create, update, import, delete, backup, restore, recover, purge"
+      }
+    },
+    "secrets": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Permissions to secrets - get, list, set, delete, backup, restore, recover, purge"
+      }
+    },
+    "certificates": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Permissions to certificates - get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge"
+      }
+    },
+    "storage": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Permissions to storage accounts - get, list, delete, set, update, regeneratekey, setsas, listsas, getsas, deletesas"
+      }
+    }
+  },
+  "variables": {
+    "comments": {
+      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#Permissions"
+    },
+    "permissions": {
+      "keys": "[parameters('keys')]",
+      "secrets": "[parameters('secrets')]",
+      "certificates": "[parameters('certificates')]",
+      "storage": "[parameters('storage')]"
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "permissions": {
+      "type": "object",
+      "value": "[variables('permissions')]"
+    }
+  }
+}
