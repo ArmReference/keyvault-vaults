@@ -22,28 +22,28 @@
       }
     },
     "enabledForDeployment": {
-      "type": "boolean",
+      "type": "bool",
       "defaultValue": false,
       "metadata": {
         "description": "Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
       }
     },
     "enabledForDiskEncryption": {
-      "type": "boolean",
+      "type": "bool",
       "defaultValue": false,
       "metadata": {
         "description": "Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
       }
     },
     "enabledForTemplateDeployment": {
-      "type": "boolean",
+      "type": "bool",
       "defaultValue": false,
       "metadata": {
         "description": "Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
       }
     },
     "enableSoftDelete": {
-      "type": "boolean",
+      "type": "bool",
       "defaultValue": false,
       "metadata": {
         "description": "Property to specify whether the 'soft delete' functionality is enabled for this key vault. It does not accept false value."
