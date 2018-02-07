@@ -45,7 +45,7 @@
         "permissions": "[parameters('permissions')]"
       }
     ],
-    "accessPolicies": "[if(empty('applicationId'),variables('policy')[0],variables('policy')[1])]"
+    "accessPolicies": "[if(empty(parameters('applicationId')),variables('policy')[0],variables('policy')[1])]"
   },
   "resources": [
   ],
