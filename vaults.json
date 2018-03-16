@@ -13,6 +13,13 @@
       "metadata": {
         "description": "Properties of the vault"
       }
+    },
+    "DependsOn": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Pass dependencies"
+      }
     }
   },
   "variables": {
@@ -24,6 +31,7 @@
       "type": "Microsoft.KeyVault/vaults",
       "apiVersion": "2016-10-01",
       "location": "[resourceGroup().location]",
+      "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
       "tags": "",
       "properties": "[parameters('VaultProperties')]"
     }
