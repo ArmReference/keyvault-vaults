@@ -116,7 +116,7 @@
    "properties": {
     "mode": "Incremental",
     "templateLink": {
-     "uri": "[concat(variables('templateUri'), '/properties.json', parameters('SasToken'))]",
+     "uri": "[concat(variables('templateUri'), '/vaultproperties.json', parameters('SasToken'))]",
      "contentVersion": "1.0.0.0"
     },
     "parameters": {
