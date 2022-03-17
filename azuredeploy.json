@@ -1,6 +1,6 @@
 {
  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
- "contentVersion": "1.0.0.0",
+ "contentVersion": "1.0.0.1",
  "metadata": {
   "summary": "These templates are not meant for deployment, they simply build reference templates",
   "description": "This template generates a reference for a KeyVault"
@@ -40,7 +40,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/sku.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "family": {
@@ -61,7 +61,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/permissions.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "keys": {
@@ -90,7 +90,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/accessPolicies.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "tenantId": {
@@ -115,7 +115,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/networkruleset.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "bypass": {
@@ -140,7 +140,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/vaultproperties.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "tenantId": {
@@ -184,7 +184,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/vaults.json', parameters('SasToken'))]",
-     "contentVersion": "1.0.0.0"
+     "contentVersion": "1.0.0.1"
     },
     "parameters": {
      "name": {
@@ -202,7 +202,7 @@
    "type": "object",
    "value": {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "contentVersion": "1.0.0.1",
     "parameters": {},
     "variables": {},
     "resources": [
