@@ -52,7 +52,10 @@
   "outputs": {
     "accessPolicies": {
       "type": "object",
-      "value": "[variables('accessPolicies')]"
+      "value": "[variables('accessPolicies')]",
+      "metadata": {
+        "description": "Azure KeyVault Access Policy"
+      }
     }
   }
 }

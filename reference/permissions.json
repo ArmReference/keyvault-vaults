@@ -47,7 +47,10 @@
   "outputs": {
     "permissions": {
       "type": "object",
-      "value": "[variables('permissions')]"
+      "value": "[variables('permissions')]",
+      "metadata": {
+        "description": "Azure KeyVault Permissions Object"
+      }
     }
   }
 }

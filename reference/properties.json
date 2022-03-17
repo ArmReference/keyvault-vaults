@@ -80,7 +80,10 @@
   "outputs": {
     "properties": {
       "type": "object",
-      "value": "[variables('properties')]"
+      "value": "[variables('properties')]",
+      "metadata": {
+        "description": "Azure KeyVault Properties"
+      }
     }
   }
 }
