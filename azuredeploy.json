@@ -106,12 +106,35 @@
    }
   },
   {
+   "name": "BuildNetworkAcl",
+   "type": "Microsoft.Resources/deployments",
+   "apiVersion": "2016-09-01",
+   "dependsOn": [
+   ],
+   "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+     "uri": "[concat(variables('templateUri'), '/networkruleset.json', parameters('SasToken'))]",
+     "contentVersion": "1.0.0.0"
+    },
+    "parameters": {
+     "bypass": {
+      "value": "AzureServices"
+     },
+     "defaultAction": {
+      "value": "Allow"
+     }
+    }
+   }
+  },
+  {
    "name": "BuildVaultProperties",
    "type": "Microsoft.Resources/deployments",
    "apiVersion": "2016-09-01",
    "dependsOn": [
     "[concat('Microsoft.Resources/deployments/','BuildSKU')]",
-    "[concat('Microsoft.Resources/deployments/','BuildUserIDAccessPolicy')]"
+    "[concat('Microsoft.Resources/deployments/','BuildUserIDAccessPolicy')]",
+    "[concat('Microsoft.Resources/deployments/','BuildNetworkAcl')]"
    ],
    "properties": {
     "mode": "Incremental",
@@ -128,6 +151,12 @@
      },
      "accessPolicies": {
       "value": "[createarray(reference('BuildUserIDAccessPolicy').outputs.accessPolicies.value)]"
+     },
+     "publicNetworkAccess": {
+      "value": "Disabled"
+     },
+     "networkAcls": {
+      "value": "[reference('BuildNetworkAcl').outputs.NetworkRuleSet.value]"
      },
      "enabledForDeployment": {
       "value": true
