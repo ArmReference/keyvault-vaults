@@ -1,0 +1,133 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tenantId": {
+      "type": "string",
+      "metadata": {
+        "description": "The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. - globally unique identifier"
+      }
+    },
+    "softDeleteRetentionInDays": {
+      "type": "int",
+      "minValue": 7,
+      "maxValue" : 90,
+      "metadata":{
+        "description": "softDelete data retention days. It accepts >=7 and <=90."
+      }
+    },
+    "publicNetworkAccess":{
+      "type": "string",
+      "allowedValues": [
+        "Enabled",
+        "Disabled"
+      ],
+      "metadata": {
+        "description": "Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules."
+      }
+    },
+    "networkAcls": {
+      "type": "object",
+      "defaultValue": {},
+      "metadata": {
+        "description": "A set of rules governing the network accessibility of a vault."
+      }
+    },
+    "sku": {
+      "type": "object",
+      "metadata": {
+        "description": "SKU details"
+      }
+    },
+    "accessPolicies": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. "
+      }
+    },
+    "enabledForDeployment": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+      }
+    },
+    "enabledForDiskEncryption": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
+      }
+    },
+    "enabledForTemplateDeployment": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+      }
+    },
+    "enablePurgeProtection":{
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value."
+      }
+    },
+    "enableRbacAuthorization": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the vault is created with the default value of false. Note that management actions are always authorized with RBAC."
+      }
+    },
+    "enableSoftDelete": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Property to specify whether the 'soft delete' functionality is enabled for this key vault. It does not accept false value."
+      }
+    }
+  },
+  "variables": {
+    "Vaultproperties": [
+      {
+        "tenantid": "[parameters('tenantId')]",
+        "sku": "[parameters('sku')]",
+        "accessPolicies": "[parameters('accessPolicies')]",
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+        "networkAcls": "[parameters('networkAcls')]",
+        "enableRbacAuthorization": "[parameters('enableRbacAuthorization')]"
+      },
+      {
+        "tenantid": "[parameters('tenantId')]",
+        "sku": "[parameters('sku')]",
+        "accessPolicies": "[parameters('accessPolicies')]",
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "enableSoftDelete": "[parameters('enableSoftDelete')]",
+        "softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
+        "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+        "networkAcls": "[parameters('networkAcls')]",
+        "enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
+        "enablePurgeProtection": "[parameters('enablePurgeProtection')]"
+      }
+    ],
+    "properties": "[if(parameters('enableSoftDelete'),variables('Vaultproperties')[1],variables('Vaultproperties')[0])]"
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "properties": {
+      "type": "object",
+      "value": "[variables('properties')]",
+      "metadata": {
+        "description": "Azure KeyVault Properties"
+      }
+    }
+  }
+}
