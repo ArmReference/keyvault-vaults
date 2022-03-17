@@ -47,4 +47,4 @@ jobs:
         azcliversion: 2.34.1
         inlinescript: |
           az storage container create --name '${{steps.Container_Name.outputs.CONTAINER}}' --account-name ${{ secrets.AccountName }} --account-key ${{ secrets.AccountKey }} --public-access container
-          az storage blob upload-batch --account-name ${{ secrets.AccountName }} --account-key ${{ secrets.AccountKey }} -d ${{steps.Container_Name.outputs.CONTAINER}} -s reference --overwrite true --destination-path Microsoft.RecoveryServices/reference
+          az storage blob upload-batch --account-name ${{ secrets.AccountName }} --account-key ${{ secrets.AccountKey }} -d ${{steps.Container_Name.outputs.CONTAINER}} -s reference --overwrite true --destination-path Microsoft.KeyVault/reference
