@@ -1,4 +1,4 @@
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FArmReference%2Fkeyvault-vaults%2F1.0.0.0%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FArmReference%2Fkeyvault-vaults%2F1.0.0.1%2Fazuredeploy.json)
 # Azure template
 
 These templates are not meant for deployment, they simply build reference templates
@@ -44,7 +44,7 @@ armTemplate | object | Fully populated template
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.1",
+    "contentVersion": "1.0.0.0",
     "metadata": {
         "template": "azuredeploy.json"
     },
