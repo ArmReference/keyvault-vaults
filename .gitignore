@@ -11,8 +11,6 @@
 *.targets
 *.deployproj
 *.sln
-azuredeploy.*
-Deploy-AzureResourceGoup.ps1
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
