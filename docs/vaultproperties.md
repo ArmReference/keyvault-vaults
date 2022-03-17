@@ -5,7 +5,7 @@
 Parameter name | Required | Description
 -------------- | -------- | -----------
 tenantId       | Yes      | The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. - globally unique identifier
-softDeleteRetentionInDays | Yes      | softDelete data retention days. It accepts >=7 and <=90.
+softDeleteRetentionInDays | No       | softDelete data retention days. It accepts >=7 and <=90.
 publicNetworkAccess | Yes      | Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 networkAcls    | No       | A set of rules governing the network accessibility of a vault.
 sku            | Yes      | SKU details
@@ -25,9 +25,11 @@ The Azure Active Directory tenant ID that should be used for authenticating requ
 
 ### softDeleteRetentionInDays
 
-![Parameter Setting](https://img.shields.io/badge/parameter-required-orange?style=flat-square)
+![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
 
 softDelete data retention days. It accepts >=7 and <=90.
+
+- Default value: `7`
 
 ### publicNetworkAccess
 
@@ -125,7 +127,7 @@ properties | object | Azure KeyVault Properties
             "value": ""
         },
         "softDeleteRetentionInDays": {
-            "value": 0
+            "value": 7
         },
         "publicNetworkAccess": {
             "value": ""
