@@ -3,7 +3,7 @@
 
 These templates are not meant for deployment, they simply build reference templates
 
-This template generates a reference for a KeyVault.
+This template generates a reference for a KeyVault
 
 ## Parameters
 
