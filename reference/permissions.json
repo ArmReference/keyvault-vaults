@@ -32,9 +32,6 @@
     }
   },
   "variables": {
-    "comments": {
-      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults#Permissions"
-    },
     "permissions": {
       "keys": "[parameters('keys')]",
       "secrets": "[parameters('secrets')]",
