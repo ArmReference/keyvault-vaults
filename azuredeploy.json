@@ -40,7 +40,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/sku.json', parameters('SasToken'))]",
-     "contentVersion": "2017.09.01.0"
+     "contentVersion": "1.0.0.0"
     },
     "parameters": {
      "family": {
@@ -61,7 +61,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/permissions.json', parameters('SasToken'))]",
-     "contentVersion": "2017.09.01.0"
+     "contentVersion": "1.0.0.0"
     },
     "parameters": {
      "keys": {
@@ -90,7 +90,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/accessPolicies.json', parameters('SasToken'))]",
-     "contentVersion": "2017.09.01.0"
+     "contentVersion": "1.0.0.0"
     },
     "parameters": {
      "tenantId": {
@@ -117,7 +117,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/properties.json', parameters('SasToken'))]",
-     "contentVersion": "2017.09.01.0"
+     "contentVersion": "1.0.0.0"
     },
     "parameters": {
      "tenantId": {
@@ -155,7 +155,7 @@
     "mode": "Incremental",
     "templateLink": {
      "uri": "[concat(variables('templateUri'), '/vaults.json', parameters('SasToken'))]",
-     "contentVersion": "2017.09.01.0"
+     "contentVersion": "1.0.0.0"
     },
     "parameters": {
      "name": {
