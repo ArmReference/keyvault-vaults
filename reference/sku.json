@@ -36,7 +36,10 @@
   "outputs": {
     "sku": {
       "type": "object",
-      "value": "[variables('sku')]"
+      "value": "[variables('sku')]",
+      "metadata": {
+        "description": "Azure KeyVault SKU"
+      }
     }
   }
 }

@@ -41,7 +41,10 @@
   "outputs": {
     "vaults": {
       "type": "object",
-      "value": "[variables('vaults')]"
+      "value": "[variables('vaults')]",
+      "metadata": {
+        "description": "Azure KeyVault template"
+      }
     }
   }
 }
