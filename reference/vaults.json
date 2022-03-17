@@ -23,13 +23,10 @@
     }
   },
   "variables": {
-    "comments": {
-      "definition": "https://docs.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults"
-    },
     "vaults": {
       "name": "[parameters('name')]",
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2016-10-01",
+      "apiVersion": "2021-10-01",
       "location": "[resourceGroup().location]",
       "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
       "tags": "",
