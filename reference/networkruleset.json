@@ -1,0 +1,61 @@
+{
+ "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+  "bypass": {
+   "type": "string",
+   "defaultValue": "AzureServices",
+   "allowedValues": [
+    "AzureServices",
+    "None"
+   ],
+   "metadata": {
+    "description": "Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'."
+   }
+  },
+  "defaultAction": {
+   "type": "string",
+   "allowedValues": [
+    "Allow",
+    "Deny"
+   ],
+   "metadata": {
+    "description": "The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated."
+   }
+  },
+  "ipRules": {
+   "type": "array",
+   "defaultValue": [],
+   "metadata": {
+    "description": "The list of IP address rules."
+   }
+  },
+  "virtualNetworkRules": {
+   "type": "array",
+   "defaultValue": [],
+   "metadata": {
+    "description": "The list of virtual network rules."
+   }
+  }
+
+ },
+ "variables": {
+  "NetworkRuleSet": {
+   "bypass": "[parameters('bypass')]",
+   "defaultAction": "[parameters('defaultAction')]",
+   "ipRules": "[parameters('ipRules')]",
+   "virtualNetworkRules": "[parameters('virtualNetworkRules')]"
+  }
+ },
+ "resources": [
+ ],
+ "outputs": {
+  "NetworkRuleSet": {
+   "type": "object",
+   "value": "[variables('NetworkRuleSet')]",
+   "metadata": {
+    "description": "Azure KeyVault NetworkRuleSet"
+   }
+  }
+ }
+}
