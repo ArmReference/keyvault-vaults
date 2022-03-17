@@ -12,6 +12,7 @@
       "type": "int",
       "minValue": 7,
       "maxValue" : 90,
+      "defaultValue": 7,
       "metadata":{
         "description": "softDelete data retention days. It accepts >=7 and <=90."
       }
