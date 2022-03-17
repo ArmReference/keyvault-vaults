@@ -1,0 +1,28 @@
+{
+ "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+   "value": {
+     "type": "string",
+     "metadata": {
+       "description": "An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78)."
+     }
+   }
+ },
+ "variables": {
+   "IPRule": {
+     "value": "[parameters('value')]"
+   }
+ },
+ "resources": [
+ ],
+ "outputs": {
+   "IPRule": {
+     "type": "object",
+     "value": "[variables('IPRule')]",
+     "metadata": {
+       "description": "Azure KeyVault IPRule"
+     }
+   }
+ }
+}
