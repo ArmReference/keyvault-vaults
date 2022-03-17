@@ -1,0 +1,35 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "id": {
+      "type": "string",
+      "metadata": {
+        "description": "Full resource id of a vnet subnet"
+      }
+    },
+    "ignoreMissingVnetServiceEndpoint": {
+      "type": "bool",
+      "metadata": {
+        "description": "Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured."
+      }
+    }
+  },
+  "variables": {
+    "VirtualNetworkRule": {
+      "id": "[parameters('id')]",
+      "ignoreMissingVnetServiceEndpoint": "[parameters('ignoreMissingVnetServiceEndpoint')]"
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "VirtualNetworkRule": {
+      "type": "object",
+      "value": "[variables('VirtualNetworkRule')]",
+      "metadata": {
+        "description": "Azure KeyVault VirtualNetworkRule"
+      }
+    }
+  }
+}
