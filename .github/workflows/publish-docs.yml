@@ -38,11 +38,9 @@ jobs:
         git config user.email "<>";
     - name: Update ReadME
       run:
-        output=`git status --porcelain`;
-        if ![ -z "$output" ]; then
-          git add *;
-          git commit -m "Updating README with latest documentation";
-          git push origin main
+        git add *;
+        git commit -m "Updating README with latest documentation";
+        git push origin main
     - name: Send to Azure Storage Account
       uses: azure/CLI@v1
       with:
