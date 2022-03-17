@@ -9,7 +9,7 @@ softDeleteRetentionInDays | No       | softDelete data retention days. It accept
 publicNetworkAccess | Yes      | Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 networkAcls    | No       | A set of rules governing the network accessibility of a vault.
 sku            | Yes      | SKU details
-accessPolicies | No       | An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. 
+accessPolicies | No       | An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 enabledForDeployment | No       | Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
 enabledForDiskEncryption | No       | Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
 enabledForTemplateDeployment | No       | Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
@@ -55,7 +55,7 @@ SKU details
 
 ![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
 
-An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. 
+An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 
 ### enabledForDeployment
 
@@ -118,7 +118,7 @@ properties | object | Azure KeyVault Properties
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
+    "contentVersion": "1.0.0.1",
     "metadata": {
         "template": "reference/vaultproperties.json"
     },
