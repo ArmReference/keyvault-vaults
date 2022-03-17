@@ -4,49 +4,46 @@
 
 Parameter name | Required | Description
 -------------- | -------- | -----------
-name           | Yes      | Name of resource
-location       | No       | The supported Azure location where the key vault should be created.
-VaultProperties | Yes      | Properties of the vault
-tags           | No       | The tags that will be assigned to the key vault.
-DependsOn      | No       | Pass dependencies
+bypass         | No       | Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'.
+defaultAction  | Yes      | The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
+ipRules        | No       | The list of IP address rules.
+virtualNetworkRules | No       | The list of virtual network rules.
 
-### name
+### bypass
+
+![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
+
+Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'.
+
+- Default value: `AzureServices`
+
+- Allowed values: `AzureServices`, `None`
+
+### defaultAction
 
 ![Parameter Setting](https://img.shields.io/badge/parameter-required-orange?style=flat-square)
 
-Name of resource
+The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 
-### location
+- Allowed values: `Allow`, `Deny`
 
-![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
-
-The supported Azure location where the key vault should be created.
-
-- Default value: `[resourceGroup().location]`
-
-### VaultProperties
-
-![Parameter Setting](https://img.shields.io/badge/parameter-required-orange?style=flat-square)
-
-Properties of the vault
-
-### tags
+### ipRules
 
 ![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
 
-The tags that will be assigned to the key vault.
+The list of IP address rules.
 
-### DependsOn
+### virtualNetworkRules
 
 ![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
 
-Pass dependencies
+The list of virtual network rules.
 
 ## Outputs
 
 Name | Type | Description
 ---- | ---- | -----------
-vaults | object | Azure KeyVault template
+NetworkRuleSet | object | Azure KeyVault NetworkRuleSet
 
 ## Snippets
 
@@ -57,22 +54,19 @@ vaults | object | Azure KeyVault template
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "metadata": {
-        "template": "reference/vaults.json"
+        "template": "reference/networkruleset.json"
     },
     "parameters": {
-        "name": {
+        "bypass": {
+            "value": "AzureServices"
+        },
+        "defaultAction": {
             "value": ""
         },
-        "location": {
-            "value": "[resourceGroup().location]"
+        "ipRules": {
+            "value": []
         },
-        "VaultProperties": {
-            "value": {}
-        },
-        "tags": {
-            "value": {}
-        },
-        "DependsOn": {
+        "virtualNetworkRules": {
             "value": []
         }
     }
