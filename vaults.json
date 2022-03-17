@@ -37,15 +37,6 @@
     }
   },
   "resources": [
-    {
-      "name": "[parameters('name')]",
-      "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2016-10-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": "[if(empty(parameters('DependsOn')),json('null'),parameters('DependsOn'))]",
-      "tags": "",
-      "properties": "[parameters('VaultProperties')]"
-    }
   ],
   "outputs": {
     "vaults": {
